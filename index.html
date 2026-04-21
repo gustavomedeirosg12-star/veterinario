@@ -107,7 +107,7 @@
         .hero-content { position: relative; z-index: 10; width: 100%; text-align: center; color: white; }
         .hero-badge { display: inline-block; padding: 8px 16px; background-color: rgba(255,255,255,0.1); border-radius: 50px; font-size: 14px; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px); }
         .hero-title { font-size: 5vw; line-height: 1.1; margin-bottom: 20px; }
-        .hero-title span { display: inline-block; opacity: 0; transform: translateY(30px); }
+        .hero-title > span { display: inline-block; opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .hero-title .highlight { color: var(--secondary-main); }
         .hero-subtitle { font-size: 20px; max-width: 600px; margin: 0 auto 40px; color: #E0E0E0; font-weight: 400;}
         .hero-ctas { display: flex; gap: 20px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap;}
@@ -343,11 +343,7 @@
 
         <div class="container hero-content">
             <div class="hero-badge">🟢 ATENDIMENTO 6 DIAS POR SEMANA · EMERGÊNCIAS 24H</div>
-            <h1 class="hero-title" id="hero-title">
-                Seu pet merece<br>
-                <span class="highlight">o melhor cuidado</span><br>
-                de Uberlândia
-            </h1>
+            <h1 class="hero-title" id="hero-title">Seu pet merece<br><strong class="highlight">o melhor cuidado</strong><br>em Uberlândia</h1>
             <p class="hero-subtitle">Consultas, vacinação, cirurgias, internação e muito mais. Com amor e tecnologia de ponta.</p>
             
             <div class="hero-ctas">
@@ -861,7 +857,7 @@
             // Hero Title Reveal Animation
             setTimeout(() => {
                 const title = document.getElementById('hero-title');
-                const words = title.innerHTML.split('<br>');
+                const words = title.innerHTML.split(/<br\s*\/?>/i);
                 title.innerHTML = '';
                 words.forEach((word, index) => {
                     const span = document.createElement('span');
